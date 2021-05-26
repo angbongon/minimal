@@ -12,6 +12,7 @@ lib/libX11
 lib/libXext
 lib/libXinerama
 lib/libXfixes
+lib/libXrender
 lib/libXcursor
 lib/libfontenc
 lib/libICE
