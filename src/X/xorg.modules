@@ -1,0 +1,2885 @@
+<?xml version="1.0"?><!--*- mode: nxml; indent-tabs-mode: nil -*-->
+<!DOCTYPE moduleset SYSTEM "moduleset.dtd">
+<?xml-stylesheet type="text/xsl" href="moduleset.xsl"?>
+<moduleset>
+  <repository type="git" name="gitlab.freedesktop.org" default="yes"
+              href="https://gitlab.freedesktop.org/"/>
+<!--
+		The X Window System JHBuild Modules List Sample File
+
+	The list is intended to be exhaustive and covers all X modules and their
+	dependencies, roughly matching the latest release.
+
+	With the matching jhbuildrc in $HOME/.config, run 'jhbuild build'
+	to build all of X. The dependencies are such that you never need to
+	type the name of a meta module.
+
+	It is a sample, so you will need to copy and trim it to suit your needs.
+	Not all modules build on all O/S and not on all CPUs. The build order
+	is subject to dependencies, it will not follow the list order.
+
+	Most modules will build on platforms they are not intended to run on.
+	This allows working on Autoconf, man pages, documentation, .pc files,
+	creating a tarball, and so on...
+
+	Refer to this excellent short guide on how to invoke JHBuild commands:
+	https://developer.gnome.org/jhbuild/unstable/index.html.en
+-->
+
+
+  <!-- 	The X Window System - Meta Module  -->
+  <!--  To build with HTML output, run 'jhbuild tinderbox -o directory' -->
+  <metamodule id="The X Window System">
+    <dependencies>
+      <dep package="Build Prerequisites"/>
+      <dep package="The X11 Protocols"/>
+      <dep package="util-makedepend"/>
+      <dep package="X11/XCB Libraries"/>
+      <dep package="The XCB Utilities"/>
+      <dep package="Mesa 3D Graphics"/>
+      <dep package="data-bitmaps"/>
+      <dep package="The X11 Applications"/>
+      <dep package="data-cursors"/>
+      <dep package="xkeyboard-config"/>
+      <dep package="The X Display Server"/>
+      <dep package="The X Input Drivers"/>		 <!-- Not for Darwin -->
+      <dep package="The X Video Drivers"/>		 <!-- Not for Darwin -->
+      <dep package="The X11 Fonts"/>
+      <dep package="xorg-docs"/>
+      <!--dep package="xts"/-->			       <!-- The X Test Suite -->
+    </dependencies>
+  </metamodule>
+
+
+  <!-- Build Prerequisites -->
+  <metamodule id="Build Prerequisites">
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xcb-pthread-stubs"/>
+      <dep package="fontconfig"/>
+      <dep package="font-util"/>
+      <dep package="xorg-sgml-doctools"/>
+      <dep package="util-bdftopcf"/>
+    </dependencies>
+  </metamodule>
+
+  <!-- X11 Protocol & Extensions - Meta Module -->
+  <metamodule id="The X11 Protocols">
+    <dependencies>
+      <dep package="xorgproto"/>
+      <dep package="xcb-proto"/>
+    </dependencies>
+  </metamodule>
+
+  <!--  XCB (X protocol C-language Binding) - Meta Module -->
+   <metamodule id="The XCB Utilities">
+     <dependencies>
+       <dep package="xcb-util"/>
+       <dep package="xcb-util-image"/>
+       <dep package="xcb-util-keysyms"/>
+       <dep package="xcb-util-renderutil"/>
+       <dep package="xcb-util-wm"/>
+     </dependencies>
+   </metamodule>
+
+  <!-- X11 Libraries - Meta Module -->
+  <metamodule id="X11/XCB Libraries">
+    <dependencies>
+      <dep package="libAppleWM"/>				  <!-- Darwin-->
+      <dep package="libFS"/>
+      <dep package="libICE"/>
+      <dep package="libSM"/>
+      <dep package="libX11"/>
+      <dep package="libXScrnSaver"/>
+      <dep package="libXau"/>
+      <dep package="libXaw"/>
+      <dep package="libXaw3d"/>
+      <dep package="libXcomposite"/>
+      <dep package="libXcursor"/>
+      <dep package="libXdamage"/>
+      <dep package="libXdmcp"/>
+      <dep package="libXext"/>
+      <dep package="libXfixes"/>
+      <dep package="libXfont"/>
+      <dep package="libXft"/>
+      <dep package="libXi"/>
+      <dep package="libXinerama"/>
+      <dep package="libXmu"/>
+      <dep package="libXpm"/>
+      <dep package="libXrandr"/>
+      <dep package="libXrender"/>
+      <dep package="libXRes"/>
+      <dep package="libXt"/>
+      <dep package="libXtst"/>
+      <dep package="libXv"/>
+      <dep package="libXvMC"/>
+      <dep package="libXxf86dga"/>
+      <dep package="libXxf86vm"/>
+      <dep package="libdmx"/>
+      <dep package="libfontenc"/>
+      <dep package="libpciaccess"/>
+      <dep package="libpixman"/>
+      <dep package="libxcb"/>
+      <dep package="libxkbfile"/>
+      <dep package="libxshmfence"/>
+      <dep package="libxtrans"/>
+      <dep package="libWindowsWM"/>				 <!-- CYGWIN -->
+    </dependencies>
+  </metamodule>
+
+  <!--  The Mesa 3D Graphics Library - Meta Module -->
+  <metamodule id="Mesa 3D Graphics">
+    <dependencies>
+      <dep package="mesa-drm"/>
+      <dep package="mesa-mesa"/>
+    </dependencies>
+  </metamodule>
+
+  <!-- X Applications - Meta Module -->
+  <metamodule id="The X11 Applications">
+    <dependencies>
+      <dep package="app-appres"/>
+      <dep package="app-bitmap"/>
+      <dep package="app-editres"/>
+      <dep package="app-iceauth"/>
+      <dep package="app-luit"/>
+      <dep package="app-mkfontscale"/>
+      <dep package="app-rgb"/>
+      <dep package="app-rstart"/>
+      <dep package="app-scripts"/>
+      <dep package="app-sessreg"/>
+      <dep package="app-setxkbmap"/>
+      <dep package="app-smproxy"/>
+      <dep package="app-twm"/>
+      <dep package="app-xauth"/>
+      <dep package="app-xbacklight"/>
+      <dep package="app-xcalc"/>
+      <dep package="app-xclipboard"/>
+      <dep package="app-xclock"/>
+      <dep package="app-xcmsdb"/>
+      <dep package="app-xconsole"/>
+      <dep package="app-xcursorgen"/>
+      <dep package="app-xditview"/>
+      <dep package="app-xdm"/>
+      <dep package="app-xdpyinfo"/>
+      <dep package="app-xdriinfo"/>
+      <dep package="app-xev"/>
+      <dep package="app-xeyes"/>
+      <dep package="app-xfd"/>
+      <dep package="app-xfontsel"/>
+      <dep package="app-xfs"/>
+      <dep package="app-xfsinfo"/>
+      <dep package="app-xgamma"/>
+      <dep package="app-xhost"/>
+      <dep package="app-xinit"/>
+      <dep package="app-xinput"/>
+      <dep package="app-xkbcomp"/>
+      <dep package="app-xkbevd"/>
+      <dep package="app-xkbutils"/>
+      <dep package="app-xkill"/>
+      <dep package="app-xload"/>
+      <dep package="app-xlogo"/>
+      <dep package="app-xlsatoms"/>
+      <dep package="app-xlsclients"/>
+      <dep package="app-xman"/>
+      <dep package="app-xmodmap"/>
+      <dep package="app-xpr"/>
+      <dep package="app-xprop"/>
+      <dep package="app-xrandr"/>
+      <dep package="app-xrdb"/>
+      <dep package="app-xrefresh"/>
+      <dep package="app-xset"/>
+      <dep package="app-xsetroot"/>
+      <dep package="app-xsm"/>
+      <dep package="app-xstdcmap"/>
+      <dep package="app-xvidtune"/>
+      <dep package="app-xvinfo"/>
+      <dep package="app-xwd"/>
+      <dep package="app-xwininfo"/>
+      <dep package="app-xwud"/>
+    </dependencies>
+  </metamodule>
+
+  <!-- X Server - Meta Module -->
+  <metamodule id="The X Display Server">
+    <dependencies>
+      <dep package="xserver"/>
+    </dependencies>
+  </metamodule>
+
+  <!-- X Input and Video Drivers - Meta Module -->
+  <metamodule id="The X Input Drivers">
+    <dependencies>
+      <dep package="xf86-input-evdev"/>			  <!-- Linux -->
+      <dep package="xf86-input-libinput"/>	  <!-- Linux -->
+      <dep package="xf86-input-joystick"/>	  <!-- Linux and BSDs-->
+      <dep package="xf86-input-keyboard"/>
+      <dep package="xf86-input-mouse"/>
+      <dep package="xf86-input-synaptics"/>
+      <dep package="xf86-input-vmmouse"/>
+      <dep package="xf86-input-void"/>
+    </dependencies>
+  </metamodule>
+
+  <!-- X Input and Video Drivers - Meta Module -->
+  <metamodule id="The X Video Drivers">
+    <dependencies>
+      <dep package="xf86-video-apm"/>
+      <dep package="xf86-video-ark"/>
+      <dep package="xf86-video-ast"/>
+      <dep package="xf86-video-ati"/>
+      <dep package="xf86-video-chips"/>
+      <dep package="xf86-video-cirrus"/>
+      <dep package="xf86-video-dummy"/>
+      <dep package="xf86-video-fbdev"/>
+      <dep package="xf86-video-geode"/>		     <!-- Linux and BSDs i386 -->
+      <dep package="xf86-video-glint"/>
+      <dep package="xf86-video-i128"/>
+      <dep package="xf86-video-i740"/>
+      <dep package="xf86-video-intel"/>
+      <dep package="xf86-video-mach64"/>
+      <dep package="xf86-video-mga"/>
+      <dep package="xf86-video-modesetting"/>
+      <dep package="xf86-video-neomagic"/>
+      <dep package="xf86-video-nested"/>
+      <dep package="xf86-video-nouveau"/>
+      <dep package="xf86-video-nv"/>
+      <dep package="xf86-video-r128"/>
+      <dep package="xf86-video-rendition"/>
+      <dep package="xf86-video-s3"/>
+      <dep package="xf86-video-s3virge"/>
+      <dep package="xf86-video-savage"/>
+      <dep package="xf86-video-siliconmotion"/>
+      <dep package="xf86-video-sis"/>
+      <dep package="xf86-video-sisusb"/>
+      <dep package="xf86-video-suncg14"/>
+      <dep package="xf86-video-suncg3"/>
+      <dep package="xf86-video-suncg6"/>
+      <dep package="xf86-video-sunffb"/>
+      <dep package="xf86-video-sunleo"/>
+      <dep package="xf86-video-suntcx"/>
+      <dep package="xf86-video-tdfx"/>
+      <dep package="xf86-video-tga"/>
+      <dep package="xf86-video-trident"/>
+      <dep package="xf86-video-tseng"/>
+      <dep package="xf86-video-vesa"/>
+      <dep package="xf86-video-v4l"/>			  <!-- Linux -->
+      <dep package="xf86-video-vmware"/>
+      <dep package="xf86-video-voodoo"/>
+      <dep package="xf86-video-wsfb"/>		 <!-- NetBSD OpenBSD -->
+      <dep package="xf86-video-xgixp"/>			  <!-- Linux -->
+    </dependencies>
+  </metamodule>
+
+<!--  The X Font Library - Meta Module
+
+     All fonts require mkfontscale (including mkfontdir) to be available
+     The following fonts require bdftopcf to be available:
+
+	adobe-100dpi, adobe-75dpi, adobe-utopia-100dpi, adobe-utopia-75dpi,
+	arabic-misc, bh-100dpi, bh-75dpi, bh-lucidatypewriter-100dpi,
+	bh-lucidatypewriter-75dpi, bitstream-100dpi, bitstream-75dpi,
+	cronyx-cyrillic, cursor-misc, daewoo-misc, dec-misc, isas-misc,
+	jis-misc, micro-misc, misc-cyrillic, misc-misc, mutt-misc,
+	schumacher-misc, screen-cyrillic, sony-misc, sun-misc and
+	winitzki-cyrillic
+
+    The alias module is recommended to be installed after the other fonts
+    since the fonts.alias files reference specific fonts installed from the
+    other font modules
+-->
+  <metamodule id="The X11 Fonts">
+    <dependencies>
+      <dep package="font-encodings"/>
+      <dep package="font-adobe-100dpi"/>
+      <dep package="font-adobe-75dpi"/>
+      <dep package="font-adobe-utopia-100dpi"/>
+      <dep package="font-adobe-utopia-75dpi"/>
+      <dep package="font-adobe-utopia-type1"/>
+      <dep package="font-arabic-misc"/>
+      <dep package="font-bh-100dpi"/>
+      <dep package="font-bh-75dpi"/>
+      <dep package="font-bh-lucidatypewriter-100dpi"/>
+      <dep package="font-bh-lucidatypewriter-75dpi"/>
+      <dep package="font-bh-ttf"/>
+      <dep package="font-bh-type1"/>
+      <dep package="font-bitstream-100dpi"/>
+      <dep package="font-bitstream-75dpi"/>
+      <dep package="font-bitstream-type1"/>
+      <dep package="font-cronyx-cyrillic"/>
+      <dep package="font-cursor-misc"/>
+      <dep package="font-daewoo-misc"/>
+      <dep package="font-dec-misc"/>
+      <dep package="font-ibm-type1"/>
+      <dep package="font-isas-misc"/>
+      <dep package="font-jis-misc"/>
+      <dep package="font-micro-misc"/>
+      <dep package="font-misc-cyrillic"/>
+      <dep package="font-misc-ethiopic"/>
+      <dep package="font-misc-meltho"/>
+      <dep package="font-misc-misc"/>
+      <dep package="font-mutt-misc"/>
+      <dep package="font-schumacher-misc"/>
+      <dep package="font-screen-cyrillic"/>
+      <dep package="font-sony-misc"/>
+      <dep package="font-sun-misc"/>
+      <dep package="font-winitzki-cyrillic"/>
+      <dep package="font-xfree86-type1"/>
+      <dep package="font-alias"/>
+    </dependencies>
+  </metamodule>
+
+  <!--
+    =========================================================================
+    | This section contains the "definition" of the modules listed above    |
+    | No changes are needed here to trim the modules list to fit your needs |
+    =========================================================================
+  -->
+
+  <!-- X11 Protocol & Extensions - Modules definition -->
+  <autotools id="xorgproto">
+    <branch module="xorg/proto/xorgproto"
+            checkoutdir="xorg/proto/xorgproto"/>
+    <dependencies>
+      <dep package="util-macros"/>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+    </dependencies>
+  </autotools>
+
+  <!-- X11 Libraries - Modules definition -->
+  <autotools id="libAppleWM">
+    <branch module="xorg/lib/libAppleWM"
+            checkoutdir="xorg/lib/libAppleWM"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libFS">
+    <branch module="xorg/lib/libFS"
+            checkoutdir="xorg/lib/libFS"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libxtrans"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libICE">
+    <branch module="xorg/lib/libICE"
+            checkoutdir="xorg/lib/libICE"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libxtrans"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libpciaccess">
+    <branch module="xorg/lib/libpciaccess"
+            checkoutdir="xorg/lib/libpciaccess"/>
+    <dependencies>
+      <dep package="util-macros"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libSM">
+    <branch module="xorg/lib/libSM"
+            checkoutdir="xorg/lib/libSM"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libICE"/>
+      <dep package="libxtrans"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libX11">
+    <branch module="xorg/lib/libX11"
+            checkoutdir="xorg/lib/libX11"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libxcb"/>
+      <dep package="libxtrans"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXScrnSaver">
+    <branch module="xorg/lib/libXScrnSaver"
+            checkoutdir="xorg/lib/libXScrnSaver"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXau">
+    <branch module="xorg/lib/libXau"
+            checkoutdir="xorg/lib/libXau"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXaw">
+    <branch module="xorg/lib/libXaw"
+            checkoutdir="xorg/lib/libXaw"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXt"/>
+      <dep package="libXmu"/>
+      <dep package="libXpm"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXaw3d">
+    <branch module="xorg/lib/libXaw3d"
+            checkoutdir="xorg/lib/libXaw3d"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXt"/>
+      <dep package="libXmu"/>
+      <dep package="libXext"/>
+    </dependencies>
+    <suggests>
+      <dep package="libXpm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXcomposite">
+    <branch module="xorg/lib/libXcomposite"
+            checkoutdir="xorg/lib/libXcomposite"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXfixes"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXcursor">
+    <branch module="xorg/lib/libXcursor"
+            checkoutdir="xorg/lib/libXcursor"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libXrender"/>
+      <dep package="libX11"/>
+      <dep package="libXfixes"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXdamage">
+    <branch module="xorg/lib/libXdamage"
+            checkoutdir="xorg/lib/libXdamage"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXfixes"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXdmcp">
+    <branch module="xorg/lib/libXdmcp"
+            checkoutdir="xorg/lib/libXdmcp"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXext">
+    <branch module="xorg/lib/libXext"
+            checkoutdir="xorg/lib/libXext"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXfixes">
+    <branch module="xorg/lib/libXfixes"
+            checkoutdir="xorg/lib/libXfixes"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXfont">
+    <branch module="xorg/lib/libXfont"
+            checkoutdir="xorg/lib/libXfont"
+            tag="da4246c98bc51297daeec47c15181e179df94013"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libxtrans"/>
+      <dep package="libfontenc"/>
+      <dep package="libX11"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXfont2">
+    <branch module="xorg/lib/libXfont"
+            checkoutdir="xorg/lib/libXfont2"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libxtrans"/>
+      <dep package="libfontenc"/>
+      <dep package="libX11"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXft">
+    <branch module="xorg/lib/libXft"
+            checkoutdir="xorg/lib/libXft"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libXrender"/>
+      <dep package="fontconfig"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXi">
+    <branch module="xorg/lib/libXi"
+            checkoutdir="xorg/lib/libXi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="libXfixes"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXinerama">
+    <branch module="xorg/lib/libXinerama"
+            checkoutdir="xorg/lib/libXinerama"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXmu">
+    <branch module="xorg/lib/libXmu"
+            checkoutdir="xorg/lib/libXmu"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXt"/>
+      <dep package="libXext"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXpm">
+    <branch module="xorg/lib/libXpm"
+            checkoutdir="xorg/lib/libXpm"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXt"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXrandr">
+    <branch module="xorg/lib/libXrandr"
+            checkoutdir="xorg/lib/libXrandr"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXrender"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXrender">
+    <branch module="xorg/lib/libXrender"
+            checkoutdir="xorg/lib/libXrender"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXRes">
+    <branch module="xorg/lib/libXRes"
+            checkoutdir="xorg/lib/libXRes"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXt">
+    <branch module="xorg/lib/libXt"
+            checkoutdir="xorg/lib/libXt"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libSM"/>
+      <dep package="libICE"/>
+      <dep package="libX11"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXtst">
+    <branch module="xorg/lib/libXtst"
+            checkoutdir="xorg/lib/libXtst"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="libXi"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libXv">
+    <branch module="xorg/lib/libXv"
+            checkoutdir="xorg/lib/libXv"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXvMC">
+    <branch module="xorg/lib/libXvMC"
+            checkoutdir="xorg/lib/libXvMC"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="libXv"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXxf86dga">
+    <branch module="xorg/lib/libXxf86dga"
+            checkoutdir="xorg/lib/libXxf86dga"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libXxf86vm">
+    <branch module="xorg/lib/libXxf86vm"
+            checkoutdir="xorg/lib/libXxf86vm"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libdmx">
+    <branch module="xorg/lib/libdmx"
+            checkoutdir="xorg/lib/libdmx"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libfontenc">
+    <branch module="xorg/lib/libfontenc"
+            checkoutdir="xorg/lib/libfontenc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="font-util"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libxkbfile">
+    <branch module="xorg/lib/libxkbfile"
+            checkoutdir="xorg/lib/libxkbfile"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libxshmfence">
+    <branch module="xorg/lib/libxshmfence"
+            checkoutdir="xorg/lib/libxshmfence"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libxtrans">
+    <branch module="xorg/lib/libxtrans"
+            checkoutdir="xorg/lib/libxtrans"/>
+    <dependencies>
+      <dep package="util-macros"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="libWindowsWM">
+    <branch module="xorg/lib/libWindowsWM"
+            checkoutdir="xorg/lib/libWindowsWM"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+    </dependencies>
+  </autotools>
+
+  <!-- X Applications - Modules definition -->
+  <autotools id="app-appres">
+    <branch module="xorg/app/appres"
+            checkoutdir="xorg/app/appres"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="util-bdftopcf">
+    <branch module="xorg/util/bdftopcf"
+            checkoutdir="xorg/util/bdftopcf"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libXfont"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-bitmap">
+    <branch module="xorg/app/bitmap"
+            checkoutdir="xorg/app/bitmap"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+      <dep package="data-bitmaps"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-editres">
+    <branch module="xorg/app/editres"
+            checkoutdir="xorg/app/editres"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-iceauth">
+    <branch module="xorg/app/iceauth"
+            checkoutdir="xorg/app/iceauth"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libICE"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-luit">
+    <branch module="xorg/app/luit"
+            checkoutdir="xorg/app/luit"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libfontenc"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-mkfontscale">
+    <branch module="xorg/app/mkfontscale"
+            checkoutdir="xorg/app/mkfontscale"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libfontenc"/>
+    </dependencies>
+  </autotools>
+
+  <meson id="test-rendercheck">
+    <branch module="xorg/test/rendercheck"
+            checkoutdir="xorg/test/rendercheck"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXrender"/>
+    </dependencies>
+  </meson>
+
+  <autotools id="app-rgb">
+    <branch module="xorg/app/rgb"
+            checkoutdir="xorg/app/rgb"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-rstart">
+    <branch module="xorg/app/rstart"
+            checkoutdir="xorg/app/rstart"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-scripts">
+    <branch module="xorg/app/scripts"
+            checkoutdir="xorg/app/scripts"/>
+    <dependencies>
+      <dep package="util-macros"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-sessreg">
+    <branch module="xorg/app/sessreg"
+            checkoutdir="xorg/app/sessreg"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-setxkbmap">
+    <branch module="xorg/app/setxkbmap"
+            checkoutdir="xorg/app/setxkbmap"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libxkbfile"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-smproxy">
+    <branch module="xorg/app/smproxy"
+            checkoutdir="xorg/app/smproxy"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libICE"/>
+      <dep package="libSM"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-twm">
+    <branch module="xorg/app/twm"
+            checkoutdir="xorg/app/twm"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libICE"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="test-x11perf">
+      <branch module="xorg/test/x11perf"
+            checkoutdir="xorg/test/x11perf"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXmu"/>
+    </dependencies>
+    <suggests>
+      <dep package="libXrender"/>
+      <dep package="libXft"/>
+      <dep package="libXext"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="app-xauth">
+    <branch module="xorg/app/xauth"
+            checkoutdir="xorg/app/xauth"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXau"/>
+      <dep package="libXext"/>
+      <dep package="libXmu"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xbacklight">
+    <branch module="xorg/app/xbacklight"
+            checkoutdir="xorg/app/xbacklight"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libXrandr"/>
+      <dep package="xcb-util"/>
+      <dep package="libxcb"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xcalc">
+    <branch module="xorg/app/xcalc"
+            checkoutdir="xorg/app/xcalc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXt"/>
+      <dep package="libXaw"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xclipboard">
+    <branch module="xorg/app/xclipboard"
+            checkoutdir="xorg/app/xclipboard"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXt"/>
+      <dep package="libXaw"/>
+      <dep package="libXmu"/>
+    </dependencies>
+    <suggests>
+      <dep package="libxkbfile"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="app-xclock">
+    <branch module="xorg/app/xclock"
+            checkoutdir="xorg/app/xclock"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+    <suggests>
+      <dep package="libXrender"/>
+      <dep package="libXft"/>
+      <dep package="libxkbfile"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="app-xcmsdb">
+    <branch module="xorg/app/xcmsdb"
+            checkoutdir="xorg/app/xcmsdb"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xconsole">
+    <branch module="xorg/app/xconsole"
+            checkoutdir="xorg/app/xconsole"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xcursorgen">
+    <branch module="xorg/app/xcursorgen"
+            checkoutdir="xorg/app/xcursorgen"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libXcursor"/>
+      <dep package="libX11"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xditview">
+    <branch module="xorg/app/xditview"
+            checkoutdir="xorg/app/xditview"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xdm">
+    <branch module="xorg/app/xdm"
+            checkoutdir="xorg/app/xdm"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libXau"/>
+      <dep package="libXaw"/>
+      <dep package="libXdmcp"/>
+      <dep package="libXext"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+    <suggests>
+      <dep package="libXinerama"/>
+      <dep package="libXft"/>
+      <dep package="libXpm"/>
+      <dep package="libXrender"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="app-xdpyinfo">
+    <branch module="xorg/app/xdpyinfo"
+            checkoutdir="xorg/app/xdpyinfo"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="libXtst"/>
+      <dep package="libxcb"/>
+      <dep package="libXxf86vm"/>
+      <dep package="libXi"/>
+      <dep package="libXrender"/>
+      <dep package="libXcomposite"/>
+    </dependencies>
+    <suggests>
+      <dep package="libXxf86dga"/>
+      <dep package="libXinerama"/>
+      <dep package="libdmx"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="app-xdriinfo">
+    <branch module="xorg/app/xdriinfo"
+            checkoutdir="xorg/app/xdriinfo"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="mesa-mesa"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xev">
+    <branch module="xorg/app/xev"
+            checkoutdir="xorg/app/xev"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXrandr"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xeyes">
+    <branch module="xorg/app/xeyes"
+            checkoutdir="xorg/app/xeyes"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+    <suggests>
+      <dep package="libXrender"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="app-xfd">
+    <branch module="xorg/app/xfd"
+            checkoutdir="xorg/app/xfd"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="fontconfig"/>
+      <dep package="xorgproto"/>
+      <dep package="libXaw"/>
+      <dep package="libXft"/>
+      <dep package="libXrender"/>
+      <dep package="libXmu"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xfontsel">
+    <branch module="xorg/app/xfontsel"
+            checkoutdir="xorg/app/xfontsel"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xfs">
+    <branch module="xorg/app/xfs"
+            checkoutdir="xorg/app/xfs"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libXfont"/>
+      <dep package="libxtrans"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xfsinfo">
+    <branch module="xorg/app/xfsinfo"
+            checkoutdir="xorg/app/xfsinfo"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libFS"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xgamma">
+    <branch module="xorg/app/xgamma"
+            checkoutdir="xorg/app/xgamma"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libXxf86vm"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xhost">
+    <branch module="xorg/app/xhost"
+            checkoutdir="xorg/app/xhost"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXmu"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xinit">
+    <branch module="xorg/app/xinit"
+            checkoutdir="xorg/app/xinit"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xinput">
+    <branch module="xorg/app/xinput"
+            checkoutdir="xorg/app/xinput"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="libXi"/>
+      <dep package="libXrandr"/>
+      <dep package="libXinerama"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xkbcomp">
+    <branch module="xorg/app/xkbcomp"
+            checkoutdir="xorg/app/xkbcomp"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libxkbfile"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xkbevd">
+    <branch module="xorg/app/xkbevd"
+            checkoutdir="xorg/app/xkbevd"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libxkbfile"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xkbutils">
+    <branch module="xorg/app/xkbutils"
+            checkoutdir="xorg/app/xkbutils"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xkill">
+    <branch module="xorg/app/xkill"
+            checkoutdir="xorg/app/xkill"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXmu"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xload">
+    <branch module="xorg/app/xload"
+            checkoutdir="xorg/app/xload"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xlogo">
+    <branch module="xorg/app/xlogo"
+            checkoutdir="xorg/app/xlogo"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libSM"/>
+      <dep package="libXaw"/>
+      <dep package="libXext"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xlsatoms">
+    <branch module="xorg/app/xlsatoms"
+            checkoutdir="xorg/app/xlsatoms"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libxcb"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xlsclients">
+    <branch module="xorg/app/xlsclients"
+            checkoutdir="xorg/app/xlsclients"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libxcb"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xman">
+    <branch module="xorg/app/xman"
+            checkoutdir="xorg/app/xman"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xmodmap">
+    <branch module="xorg/app/xmodmap"
+            checkoutdir="xorg/app/xmodmap"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xpr">
+    <branch module="xorg/app/xpr"
+            checkoutdir="xorg/app/xpr"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXmu"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xprop">
+    <branch module="xorg/app/xprop"
+            checkoutdir="xorg/app/xprop"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xrandr">
+    <branch module="xorg/app/xrandr"
+            checkoutdir="xorg/app/xrandr"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXrandr"/>
+      <dep package="libXrender"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xrdb">
+    <branch module="xorg/app/xrdb"
+            checkoutdir="xorg/app/xrdb"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXmu"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xrefresh">
+    <branch module="xorg/app/xrefresh"
+            checkoutdir="xorg/app/xrefresh"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xset">
+    <branch module="xorg/app/xset"
+            checkoutdir="xorg/app/xset"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="libXmu"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xsetroot">
+    <branch module="xorg/app/xsetroot"
+            checkoutdir="xorg/app/xsetroot"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="data-bitmaps"/>
+      <dep package="libX11"/>
+      <dep package="libXcursor"/>
+      <dep package="libXmu"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xsm">
+    <branch module="xorg/app/xsm"
+            checkoutdir="xorg/app/xsm"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libXt"/>
+      <dep package="libICE"/>
+      <dep package="libSM"/>
+      <dep package="libXaw"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xstdcmap">
+    <branch module="xorg/app/xstdcmap"
+            checkoutdir="xorg/app/xstdcmap"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXmu"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xvidtune">
+    <branch module="xorg/app/xvidtune"
+            checkoutdir="xorg/app/xvidtune"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXmu"/>
+      <dep package="libXxf86vm"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xvinfo">
+    <branch module="xorg/app/xvinfo"
+            checkoutdir="xorg/app/xvinfo"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXv"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="app-xwd">
+    <branch module="xorg/app/xwd"
+            checkoutdir="xorg/app/xwd"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </dependencies>
+    <suggests>
+      <dep package="libxkbfile"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="app-xwininfo">
+    <branch module="xorg/app/xwininfo"
+            checkoutdir="xorg/app/xwininfo"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libxcb"/>
+    </dependencies>
+    <suggests>
+      <dep package="xcb-util-wm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="app-xwud">
+    <branch module="xorg/app/xwud"
+            checkoutdir="xorg/app/xwud"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </dependencies>
+  </autotools>
+
+  <!-- Bitmap Images and Cursors Themes - Modules Definition -->
+  <autotools id="data-bitmaps">
+    <branch module="xorg/data/bitmaps"
+            checkoutdir="xorg/data/bitmaps"/>
+    <dependencies>
+      <dep package="util-macros"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="data-cursors">
+    <branch module="xorg/data/cursors"
+            checkoutdir="xorg/data/cursors"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="app-xcursorgen"/>
+      <dep package="libXcursor"/>
+    </dependencies>
+  </autotools>
+
+  <!-- The X Server -->
+  <autotools id="xserver">
+    <branch module="xorg/xserver"
+            checkoutdir="xorg/xserver"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libXfont"/>
+      <dep package="libXfont2"/>
+      <dep package="libxtrans"/>
+      <dep package="libXau"/>
+      <dep package="libxkbfile"/>
+      <dep package="libpixman"/>
+      <dep package="app-xkbcomp"/>
+      <dep package="libxshmfence"/>			     <!-- Linux only -->
+    </dependencies>
+    <suggests>
+      <dep package="libXaw"/>
+      <dep package="libXdmcp"/>
+      <dep package="libXmu"/>
+      <dep package="libXRes"/>
+      <dep package="libXtst"/>
+      <dep package="libXv"/>
+      <dep package="libdmx"/>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+      <dep package="mesa-mesa"/>
+    </suggests>
+  </autotools>
+
+  <!-- X Input Drivers - Modules Definition -->
+  <autotools id="xf86-input-evdev">
+    <branch module="xorg/driver/xf86-input-evdev"
+            checkoutdir="xorg/driver/xf86-input-evdev"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libevdev"/>
+      <dep package="mtdev"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+  
+  <autotools id="xf86-input-libinput">
+    <branch module="xorg/driver/xf86-input-libinput"
+            checkoutdir="xorg/driver/xf86-input-libinput"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libinput"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-input-joystick">
+    <branch module="xorg/driver/xf86-input-joystick"
+            checkoutdir="xorg/driver/xf86-input-joystick"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-input-keyboard">
+    <branch module="xorg/driver/xf86-input-keyboard"
+            checkoutdir="xorg/driver/xf86-input-keyboard"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-input-mouse">
+    <branch module="xorg/driver/xf86-input-mouse"
+            checkoutdir="xorg/driver/xf86-input-mouse"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-input-synaptics">
+    <branch module="xorg/driver/xf86-input-synaptics"
+            checkoutdir="xorg/driver/xf86-input-synaptics"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXi"/>
+      <dep package="xserver"/>
+      <dep package="libevdev"/>			<!-- Linux only -->
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-input-vmmouse">
+    <branch module="xorg/driver/xf86-input-vmmouse"
+            checkoutdir="xorg/driver/xf86-input-vmmouse"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-input-void">
+    <branch module="xorg/driver/xf86-input-void"
+            checkoutdir="xorg/driver/xf86-input-void"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <!-- X Video Drivers - Modules Definition -->
+  <autotools id="xf86-video-apm">
+    <branch module="xorg/driver/xf86-video-apm"
+            checkoutdir="xorg/driver/xf86-video-apm"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libpciaccess"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="videoproto"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-ark">
+    <branch module="xorg/driver/xf86-video-ark"
+            checkoutdir="xorg/driver/xf86-video-ark"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-ast">
+    <branch module="xorg/driver/xf86-video-ast"
+            checkoutdir="xorg/driver/xf86-video-ast"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-ati">
+    <branch module="xorg/driver/xf86-video-ati"
+            checkoutdir="xorg/driver/xf86-video-ati"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="mesa-drm"/>
+      <dep package="libpciaccess"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-chips">
+    <branch module="xorg/driver/xf86-video-chips"
+            checkoutdir="xorg/driver/xf86-video-chips"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libpciaccess"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-cirrus">
+    <branch module="xorg/driver/xf86-video-cirrus"
+            checkoutdir="xorg/driver/xf86-video-cirrus"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-dummy">
+    <branch module="xorg/driver/xf86-video-dummy"
+            checkoutdir="xorg/driver/xf86-video-dummy"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-fbdev">
+    <branch module="xorg/driver/xf86-video-fbdev"
+            checkoutdir="xorg/driver/xf86-video-fbdev"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-geode">
+    <branch module="xorg/driver/xf86-video-geode"
+            checkoutdir="xorg/driver/xf86-video-geode"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-glint">
+    <branch module="xorg/driver/xf86-video-glint"
+            checkoutdir="xorg/driver/xf86-video-glint"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-i128">
+    <branch module="xorg/driver/xf86-video-i128"
+            checkoutdir="xorg/driver/xf86-video-i128"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-i740">
+    <branch module="xorg/driver/xf86-video-i740"
+            checkoutdir="xorg/driver/xf86-video-i740"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-intel">
+    <branch module="xorg/driver/xf86-video-intel"
+            checkoutdir="xorg/driver/xf86-video-intel"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libXrender"/>
+      <dep package="libXrandr"/>
+      <dep package="libXext"/>
+      <dep package="libXfixes"/>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+      <dep package="libpixman"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libX11"/>
+      <dep package="libXinerama"/>
+      <dep package="libXdamage"/>
+      <dep package="libXcursor"/>
+      <dep package="libXtst"/>
+      <dep package="libXvMC"/>
+      <dep package="libxcb"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-mach64">
+    <branch module="xorg/driver/xf86-video-mach64"
+            checkoutdir="xorg/driver/xf86-video-mach64"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-mga">
+    <branch module="xorg/driver/xf86-video-mga"
+            checkoutdir="xorg/driver/xf86-video-mga"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-modesetting">
+    <branch module="xorg/driver/xf86-video-modesetting"
+            checkoutdir="xorg/driver/xf86-video-modesetting"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libpciaccess"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-neomagic">
+    <branch module="xorg/driver/xf86-video-neomagic"
+            checkoutdir="xorg/driver/xf86-video-neomagic"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-nested">
+    <branch module="xorg/driver/xf86-video-nested"
+            checkoutdir="xorg/driver/xf86-video-nested"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-nouveau">
+    <branch module="nouveau/xf86-video-nouveau"
+            checkoutdir="xorg/driver/xf86-video-nouveau"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-nv">
+    <branch module="xorg/driver/xf86-video-nv"
+            checkoutdir="xorg/driver/xf86-video-nv"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-r128">
+    <branch module="xorg/driver/xf86-video-r128"
+            checkoutdir="xorg/driver/xf86-video-r128"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-rendition">
+    <branch module="xorg/driver/xf86-video-rendition"
+            checkoutdir="xorg/driver/xf86-video-rendition"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-s3">
+    <branch module="xorg/driver/xf86-video-s3"
+            checkoutdir="xorg/driver/xf86-video-s3"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-s3virge">
+    <branch module="xorg/driver/xf86-video-s3virge"
+            checkoutdir="xorg/driver/xf86-video-s3virge"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-savage">
+    <branch module="xorg/driver/xf86-video-savage"
+            checkoutdir="xorg/driver/xf86-video-savage"/>
+    <dependencies>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+    </suggests>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-siliconmotion">
+    <branch module="xorg/driver/xf86-video-siliconmotion"
+            checkoutdir="xorg/driver/xf86-video-siliconmotion"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-sis">
+    <branch module="xorg/driver/xf86-video-sis"
+            checkoutdir="xorg/driver/xf86-video-sis"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-sisusb">
+    <branch module="xorg/driver/xf86-video-sisusb"
+            checkoutdir="xorg/driver/xf86-video-sisusb"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>>
+      <dep package="libpciaccess"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-suncg14">
+    <branch module="xorg/driver/xf86-video-suncg14"
+            checkoutdir="xorg/driver/xf86-video-suncg14"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-suncg3">
+    <branch module="xorg/driver/xf86-video-suncg3"
+            checkoutdir="xorg/driver/xf86-video-suncg3"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-suncg6">
+    <branch module="xorg/driver/xf86-video-suncg6"
+            checkoutdir="xorg/driver/xf86-video-suncg6"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-sunffb">
+    <branch module="xorg/driver/xf86-video-sunffb"
+            checkoutdir="xorg/driver/xf86-video-sunffb"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-sunleo">
+    <branch module="xorg/driver/xf86-video-sunleo"
+            checkoutdir="xorg/driver/xf86-video-sunleo"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-suntcx">
+    <branch module="xorg/driver/xf86-video-suntcx"
+            checkoutdir="xorg/driver/xf86-video-suntcx"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-tdfx">
+    <branch module="xorg/driver/xf86-video-tdfx"
+            checkoutdir="xorg/driver/xf86-video-tdfx"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-tga">
+    <branch module="xorg/driver/xf86-video-tga"
+            checkoutdir="xorg/driver/xf86-video-tga"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-trident">
+    <branch module="xorg/driver/xf86-video-trident"
+            checkoutdir="xorg/driver/xf86-video-trident"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-tseng">
+    <branch module="xorg/driver/xf86-video-tseng"
+            checkoutdir="xorg/driver/xf86-video-tseng"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-v4l">
+    <branch module="xorg/driver/xf86-video-v4l"
+            checkoutdir="xorg/driver/xf86-video-v4l"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-vesa">
+    <branch module="xorg/driver/xf86-video-vesa"
+            checkoutdir="xorg/driver/xf86-video-vesa"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-vmware">
+    <branch module="xorg/driver/xf86-video-vmware"
+            checkoutdir="xorg/driver/xf86-video-vmware"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+      <dep package="mesa-mesa"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-voodoo">
+    <branch module="xorg/driver/xf86-video-voodoo"
+            checkoutdir="xorg/driver/xf86-video-voodoo"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <autotools id="xf86-video-wsfb">
+    <branch module="xorg/driver/xf86-video-wsfb"
+            checkoutdir="xorg/driver/xf86-video-wsfb"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xf86-video-xgixp">
+    <branch module="xorg/driver/xf86-video-xgixp"
+            checkoutdir="xorg/driver/xf86-video-xgixp"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+      <dep package="xserver"/>
+    </dependencies>
+    <suggests>
+      <dep package="libpciaccess"/>
+      <dep package="mesa-drm"/>
+    </suggests>
+  </autotools>
+
+  <!-- DocBook/XML stylesheets and documents cross-linking database -->
+  <!-- Consult the README file for further build instructions -->
+  <autotools id="xorg-sgml-doctools">
+    <branch module="xorg/doc/xorg-sgml-doctools"
+            checkoutdir="xorg/doc/xorg-sgml-doctools"/>
+    <dependencies>
+      <dep package="util-macros"/>
+    </dependencies>
+  </autotools>
+
+  <!--  X Toplevel Documents -->
+  <!-- Documentation specific to a module, if any, is located in the module -->
+  <autotools id="xorg-docs">
+    <branch module="xorg/doc/xorg-docs"
+            checkoutdir="xorg/doc/xorg-docs"/>
+    <dependencies>
+      <dep package="util-macros"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorg-sgml-doctools"/>
+    </suggests>
+  </autotools>
+
+<!--  The X Font Library - Modules Definition -->
+
+  <autotools id="font-util">
+    <branch module="xorg/font/util"
+            checkoutdir="xorg/font/util"/>
+    <dependencies>
+      <dep package="util-macros"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-encodings">
+    <branch module="xorg/font/encodings"
+            checkoutdir="xorg/font/encodings"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-adobe-100dpi">
+    <branch module="xorg/font/adobe-100dpi"
+            checkoutdir="xorg/font/adobe-100dpi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-adobe-75dpi">
+    <branch module="xorg/font/adobe-75dpi"
+            checkoutdir="xorg/font/adobe-75dpi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-adobe-utopia-100dpi">
+    <branch module="xorg/font/adobe-utopia-100dpi"
+            checkoutdir="xorg/font/adobe-utopia-100dpi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-adobe-utopia-75dpi">
+    <branch module="xorg/font/adobe-utopia-75dpi"
+            checkoutdir="xorg/font/adobe-utopia-75dpi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-adobe-utopia-type1">
+    <branch module="xorg/font/adobe-utopia-type1"
+            checkoutdir="xorg/font/adobe-utopia-type1"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-arabic-misc">
+    <branch module="xorg/font/arabic-misc"
+            checkoutdir="xorg/font/arabic-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-bh-100dpi">
+    <branch module="xorg/font/bh-100dpi"
+            checkoutdir="xorg/font/bh-100dpi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-bh-75dpi">
+    <branch module="xorg/font/bh-75dpi"
+            checkoutdir="xorg/font/bh-75dpi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-bh-lucidatypewriter-100dpi">
+    <branch module="xorg/font/bh-lucidatypewriter-100dpi"
+            checkoutdir="xorg/font/bh-lucidatypewriter-100dpi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-bh-lucidatypewriter-75dpi">
+    <branch module="xorg/font/bh-lucidatypewriter-75dpi"
+            checkoutdir="xorg/font/bh-lucidatypewriter-75dpi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-bh-ttf">
+    <branch module="xorg/font/bh-ttf"
+            checkoutdir="xorg/font/bh-ttf"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-bh-type1">
+    <branch module="xorg/font/bh-type1"
+            checkoutdir="xorg/font/bh-type1"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-bitstream-100dpi">
+    <branch module="xorg/font/bitstream-100dpi"
+            checkoutdir="xorg/font/bitstream-100dpi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-bitstream-75dpi">
+    <branch module="xorg/font/bitstream-75dpi"
+            checkoutdir="xorg/font/bitstream-75dpi"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-bitstream-type1">
+    <branch module="xorg/font/bitstream-type1"
+            checkoutdir="xorg/font/bitstream-type1"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-cronyx-cyrillic">
+    <branch module="xorg/font/cronyx-cyrillic"
+            checkoutdir="xorg/font/cronyx-cyrillic"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-cursor-misc">
+    <branch module="xorg/font/cursor-misc"
+            checkoutdir="xorg/font/cursor-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-daewoo-misc">
+    <branch module="xorg/font/daewoo-misc"
+            checkoutdir="xorg/font/daewoo-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-dec-misc">
+    <branch module="xorg/font/dec-misc"
+            checkoutdir="xorg/font/dec-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-ibm-type1">
+    <branch module="xorg/font/ibm-type1"
+            checkoutdir="xorg/font/ibm-type1"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-isas-misc">
+    <branch module="xorg/font/isas-misc"
+            checkoutdir="xorg/font/isas-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-jis-misc">
+    <branch module="xorg/font/jis-misc"
+            checkoutdir="xorg/font/jis-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-micro-misc">
+    <branch module="xorg/font/micro-misc"
+            checkoutdir="xorg/font/micro-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-misc-cyrillic">
+    <branch module="xorg/font/misc-cyrillic"
+            checkoutdir="xorg/font/misc-cyrillic"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-misc-ethiopic">
+    <branch module="xorg/font/misc-ethiopic"
+            checkoutdir="xorg/font/misc-ethiopic"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-misc-meltho">
+    <branch module="xorg/font/misc-meltho"
+            checkoutdir="xorg/font/misc-meltho"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-misc-misc">
+    <branch module="xorg/font/misc-misc"
+            checkoutdir="xorg/font/misc-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="app-mkfontscale"/>
+      <dep package="font-util"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-mutt-misc">
+    <branch module="xorg/font/mutt-misc"
+            checkoutdir="xorg/font/mutt-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-schumacher-misc">
+    <branch module="xorg/font/schumacher-misc"
+            checkoutdir="xorg/font/schumacher-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-screen-cyrillic">
+    <branch module="xorg/font/screen-cyrillic"
+            checkoutdir="xorg/font/screen-cyrillic"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-sony-misc">
+    <branch module="xorg/font/sony-misc"
+            checkoutdir="xorg/font/sony-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-sun-misc">
+    <branch module="xorg/font/sun-misc"
+            checkoutdir="xorg/font/sun-misc"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-winitzki-cyrillic">
+    <branch module="xorg/font/winitzki-cyrillic"
+            checkoutdir="xorg/font/winitzki-cyrillic"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-xfree86-type1">
+    <branch module="xorg/font/xfree86-type1"
+            checkoutdir="xorg/font/xfree86-type1"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="font-util"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="font-alias">
+    <branch module="xorg/font/alias"
+            checkoutdir="xorg/font/alias"/>
+    <dependencies>
+      <dep package="util-macros"/>
+    </dependencies>
+  </autotools>
+
+
+  <!-- The X Keyboard Extension -->
+  <autotools id="xkeyboard-config">
+    <branch module="xkeyboard-config/xkeyboard-config"
+            checkoutdir="xkeyboard-config/xkeyboard-config"/>
+    <dependencies>
+      <dep package="app-xkbcomp"/>
+    </dependencies>
+    <suggests>
+      <dep package="xorgproto"/>
+      <dep package="libX11"/>
+    </suggests>
+  </autotools>
+
+  <!--  XCB (X protocol C-language Binding)  Modules Defintion -->
+  <autotools id="xcb-pthread-stubs">
+    <branch module="xorg/lib/pthread-stubs"
+            checkoutdir="xorg/lib/pthread-stubs"/>
+  </autotools>
+
+  <autotools id="xcb-proto">
+    <branch module="xorg/proto/xcbproto"
+            checkoutdir="xorg/proto/xcbproto"/>
+  </autotools>
+
+  <autotools id="libxcb">
+    <branch module="xorg/lib/libxcb"
+            checkoutdir="xorg/lib/libxcb"/>
+    <dependencies>
+      <dep package="xcb-proto"/>
+      <dep package="xcb-pthread-stubs"/>
+      <dep package="libXau"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="xcb-util">
+    <branch module="xorg/lib/libxcb-util"
+            checkoutdir="xorg/lib/libxcb-util"/>
+    <dependencies>
+      <dep package="xorgproto"/>
+      <dep package="libxcb"/>
+    </dependencies>
+  </autotools>
+
+   <autotools id="xcb-util-image">
+    <branch module="xorg/lib/libxcb-image" checkoutdir="xorg/lib/libxcb-image"/>
+    <dependencies>
+      <dep package="xorgproto"/>
+      <dep package="libxcb"/>
+      <dep package="xcb-util"/>
+    </dependencies>
+   </autotools>
+
+   <autotools id="xcb-util-keysyms">
+    <branch module="xorg/lib/libxcb-keysyms" checkoutdir="xorg/lib/libxcb-keysyms"/>
+    <dependencies>
+      <dep package="xorgproto"/>
+      <dep package="libxcb"/>
+    </dependencies>
+   </autotools>
+
+   <autotools id="xcb-util-renderutil">
+    <branch module="xorg/lib/libxcb-render-util" checkoutdir="xorg/lib/libxcb-render-util"/>
+    <dependencies>
+      <dep package="libxcb"/>
+    </dependencies>
+   </autotools>
+
+   <autotools id="xcb-util-wm">
+    <branch module="xorg/lib/libxcb-wm" checkoutdir="xorg/lib/libxcb-wm"/>
+    <dependencies>
+      <dep package="libxcb"/>
+    </dependencies>
+   </autotools>
+
+  <!--  The Mesa 3D Graphics Library - Modules Definition -->
+  <meson id="mesa-mesa">
+    <branch module="mesa/mesa"
+            checkoutdir="mesa/mesa"/>
+    <dependencies>
+      <dep package="xorgproto"/>
+      <dep package="libXdamage"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="libXfixes"/>
+      <dep package="libxcb"/>
+      <dep package="mesa-drm"/>
+    </dependencies>
+    <suggests>
+      <dep package="libXvMC"/>
+      <dep package="libXxf86vm"/>
+    </suggests>
+  </meson>
+
+  <!-- Mesa DRM accessing the Direct Rendering Manager - Module Definition -->
+  <!-- Need nouveau API to build xf86-video-nouveau -->
+  <autotools id="mesa-drm" autogenargs="--enable-nouveau-experimental-api">
+    <branch module="mesa/drm"
+            checkoutdir="mesa/drm"/>
+    <dependencies>
+      <dep package="libpciaccess"/>
+    </dependencies>
+  </autotools>
+
+  <!-- X Build Utilities (util-macros) -->
+  <autotools id="util-macros">
+    <branch module="xorg/util/macros"
+            checkoutdir="xorg/util/macros"/>
+  </autotools>
+
+  <!-- X Build Utilities (util-makedepend) -->
+  <autotools id="util-makedepend">
+    <branch module="xorg/util/makedepend"
+            checkoutdir="xorg/util/makedepend"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="xorgproto"/>
+    </dependencies>
+  </autotools>
+
+  <!-- Pixman (Pixel Manipulation Library) - Module Definition -->
+  <autotools id="libpixman">
+    <branch module="pixman/pixman"
+            checkoutdir="pixman/pixman"/>
+    <dependencies/>
+  </autotools>
+
+  <!--  Fontconfig (Font customization and configuration library)  -->
+  <autotools id="fontconfig" autogenargs="--disable-docs">
+    <branch module="fontconfig/fontconfig"
+            checkoutdir="fontconfig/fontconfig"/>
+  </autotools>
+
+  <!-- 	Wrapper library for evdev devices -->
+  <autotools id="libevdev">
+    <branch module="libevdev"
+            checkoutdir="libevdev"/>
+    <dependencies/>
+  </autotools>
+
+  <!-- Multitouch protocol translation library for evdev devices -->
+  <repository type="git" name="bitmath.org" href="http://bitmath.org/git/"/>
+  <autotools id="mtdev">
+    <branch repo="bitmath.org"
+            module="mtdev.git"
+            checkoutdir="mtdev"/>
+    <dependencies/>
+  </autotools>
+
+  <!-- X Test Suite, tests for core protocol conformance -->
+  <autotools id="xts">
+    <branch module="xorg/test/xts"
+            checkoutdir="xorg/test/xts"/>
+    <dependencies>
+      <dep package="util-macros"/>
+      <dep package="libX11"/>
+      <dep package="libXext"/>
+      <dep package="libXau"/>
+      <dep package="libxtrans"/>
+      <dep package="libXmu"/>
+      <dep package="libXi"/>
+      <dep package="libXtst"/>
+      <dep package="libXt"/>
+      <dep package="libXaw"/>
+      <dep package="util-bdftopcf"/>
+      <dep package="app-mkfontscale"/>
+      <dep package="app-xdpyinfo"/>
+      <dep package="app-xset"/>
+      <dep package="test-rendercheck"/>
+      <dep package="test-x11perf"/>
+    </dependencies>
+  </autotools>
+
+  <!--
+		Documents containing cross-references - Meta Module
+
+	These should be rebuilt one more time after an initial successful build
+	with the -f -c options. This will allow the cross-reference database to
+	be fully populated. This is needed because of the circular references
+	among documents that build order cannot correct.
+
+		Run 'jhbuild build -f -c olink-docs'
+
+	Consult the xorg-sgml-doctools README for deeper explanations
+  -->
+  <metamodule id="olink-docs">
+    <dependencies>
+      <dep package="xorgproto"/>
+      <dep package="libICE"/>
+      <dep package="libSM"/>
+      <dep package="libX11"/>
+      <dep package="libXaw"/>
+      <dep package="libXdmcp"/>
+      <dep package="libXext"/>
+      <dep package="libXi"/>
+      <dep package="libXmu"/>
+      <dep package="libXt"/>
+      <dep package="libXtst"/>
+      <dep package="libxtrans"/>
+      <dep package="xorg-docs"/>
+    </dependencies>
+  </metamodule>
+
+</moduleset>

@@ -16,6 +16,27 @@ OVERLAY_ROOTFS=$WORK_DIR/overlay_rootfs
 ISOIMAGE=$WORK_DIR/isoimage
 ISOIMAGE_OVERLAY=$WORK_DIR/isoimage_overlay
 
+LIBBSD_INSTALLED=$WORK_DIR/libbsd/libbsd_installed
+LIBBSD_OBJECTS=$WORK_DIR/libbsd/libbsd_objects
+
+LIBSTDC_INSTALLED=$WORK_DIR/gcc/libstdc_installed
+LIBSTDC_OBJECTS=$WORK_DIR/gcc/libstdc_objects
+
+GCC_INSTALLED=$WORK_DIR/gcc/gcc_installed
+GCC_OBJECTS=$WORK_DIR/gcc/gcc_objects
+
+LIBGCC_INSTALLED=$WORK_DIR/gcc/libgcc_installed
+LIBGCC_OBJECTS=$WORK_DIR/gcc/libgcc_objects
+
+X_INSTALLED=$WORK_DIR/X/X_installed
+X_OBJECTS=$WORK_DIR/X/X_objects
+X_CODE=$PWD/X
+
+FLWM_OBJECTS=$WORK_DIR/flwm/flwm_objects
+FLWM_INSTALLED=$WORK_DIR/flwm/flwm_installed
+FLTK_OBJECTS=$WORK_DIR/fltk/fltk_objects
+FLTK_INSTALLED=$WORK_DIR/fltk/fltk_installed
+
 # This function reads property from the main '.config' file.
 #
 # Using () instead of {} for the function body is a POSIX

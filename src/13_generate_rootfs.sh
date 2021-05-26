@@ -13,10 +13,21 @@ rm -rf $ROOTFS
 # Copy all Busybox generated stuff to the location of our 'rootfs' folder.
 cp -r $BUSYBOX_INSTALLED $ROOTFS
 
+cp -r $X_INSTALLED/* $ROOTFS/usr
+
+cp -r $GCC_INSTALLED/lib64/* $ROOTFS/usr/lib
+
+cp -r $LIBBSD_INSTALLED/* $ROOTFS/usr
+
+cp -r $FLTK_INSTALLED/* $ROOTFS/usr
+
+cp -r $FLWM_INSTALLED/* $ROOTFS/usr
+
 # Copy all rootfs resources to the location of our 'rootfs' folder.
 cp -r $SRC_DIR/minimal_rootfs/* $ROOTFS
 
-# Delete the '.keep' files which we use in order to keep track of otherwise
+# Delete the '.keep' files which we use in order to keep track of otherwise:W
+
 # empty folders.
 find $ROOTFS/* -type f -name '.keep' -exec rm {} +
 
@@ -42,6 +53,10 @@ fi
 cp $SYSROOT/lib/libm.so.6 $ROOTFS/lib
 cp $SYSROOT/lib/libc.so.6 $ROOTFS/lib
 cp $SYSROOT/lib/libresolv.so.2 $ROOTFS/lib
+
+cp $SYSROOT/lib/libpthread.so $ROOTFS/lib
+cp $SYSROOT/lib/libpthread.so.0 $ROOTFS/lib
+cp $SYSROOT/lib/libpthread-2.33.so $ROOTFS/lib
 
 # Copy all necessary 'glibc' libraries to '/lib' END.
 
