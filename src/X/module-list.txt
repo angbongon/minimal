@@ -18,6 +18,7 @@ lib/libfontenc
 lib/libICE
 lib/libSM
 lib/libXt
+lib/libXft
 lib/libXmu
 lib/libXfont
 app/xset
