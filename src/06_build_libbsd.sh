@@ -5,11 +5,6 @@ set -e
 # Load common properties and functions in the current script.
 . ./common.sh
 
-# Prepare the work area, e.g. 'work/libbsd/libbsd_objects'.
-echo "Preparing libbsd object area. This may take a while."
-rm -rf $LIBBSD_OBJECTS
-mkdir $LIBBSD_OBJECTS
-
 echo "*** BUILD LIBBSD BEGIN ***"
 
 # Prepare the install area, e.g. 'work/libbsd/libbsd_installed'.
