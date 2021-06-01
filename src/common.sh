@@ -16,8 +16,27 @@ OVERLAY_ROOTFS=$WORK_DIR/overlay_rootfs
 ISOIMAGE=$WORK_DIR/isoimage
 ISOIMAGE_OVERLAY=$WORK_DIR/isoimage_overlay
 
+BZIP2_INSTALLED=$WORK_DIR/bzip2/bzip2_installed
+
+BROTLI_INSTALLED=$WORK_DIR/brotli/brotli_installed
+
+GLIB_INSTALLED=$WORK_DIR/glib/glib_installed
+
+LIBPNG_INSTALLED=$WORK_DIR/libpng/libpng_installed
+
 LIBBSD_INSTALLED=$WORK_DIR/libbsd/libbsd_installed
-LIBBSD_OBJECTS=$WORK_DIR/libbsd/libbsd_objects
+
+LIBUUID_INSTALLED=$WORK_DIR/libuuid/libuuid_installed
+LIBUUID_OBJECTS=$WORK_DIR/libuuid/libuuid_objects
+
+ZLIB_INSTALLED=$WORK_DIR/zlib/zlib_installed
+ZLIB_OBJECTS=$WORK_DIR/zlib/zlib_objects
+
+FREETYPE_INSTALLED=$WORK_DIR/freetype/freetype_installed
+FREETYPE_OBJECTS=$WORK_DIR/freetype/freetype_objects
+
+EXPAT_INSTALLED=$WORK_DIR/expat/expat_installed
+EXPAT_OBJECTS=$WORK_DIR/expat/expat_objects
 
 LIBSTDC_INSTALLED=$WORK_DIR/gcc/libstdc_installed
 LIBSTDC_OBJECTS=$WORK_DIR/gcc/libstdc_objects
@@ -27,6 +46,12 @@ GCC_OBJECTS=$WORK_DIR/gcc/gcc_objects
 
 LIBGCC_INSTALLED=$WORK_DIR/gcc/libgcc_installed
 LIBGCC_OBJECTS=$WORK_DIR/gcc/libgcc_objects
+
+HARFBUZZ_INSTALLED=$WORK_DIR/harfbuzz/harfbuzz_installed
+HARFBUZZ_OBJECTS=$WORK_DIR/harfbuzz/harfbuzz_objects
+
+FONTCONFIG_INSTALLED=$WORK_DIR/fontconfig/fontconfig_installed
+FONTCONFIG_OBJECTS=$WORK_DIR/fontconfig/fontconfig_objects
 
 X_INSTALLED=$WORK_DIR/X/X_installed
 X_OBJECTS=$WORK_DIR/X/X_objects
