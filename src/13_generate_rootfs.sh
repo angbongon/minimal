@@ -8,24 +8,62 @@ set -e
 echo "*** GENERATE ROOTFS BEGIN ***"
 
 echo "Preparing rootfs work area. This may take a while."
+# Copy all rootfs resources to the location of our 'rootfs' folder.
 rm -rf $ROOTFS
 
 # Copy all Busybox generated stuff to the location of our 'rootfs' folder.
 cp -r $BUSYBOX_INSTALLED $ROOTFS
 
-cp -r $X_INSTALLED/* $ROOTFS/usr
-
-cp -r $GCC_INSTALLED/lib64/* $ROOTFS/usr/lib
-
-cp -r $LIBBSD_INSTALLED/* $ROOTFS/usr
-
-cp -r $FLTK_INSTALLED/* $ROOTFS/usr
-
-cp -r $FLWM_INSTALLED/* $ROOTFS/usr
-
-# Copy all rootfs resources to the location of our 'rootfs' folder.
 cp -r $SRC_DIR/minimal_rootfs/* $ROOTFS
 
+cp $BZIP2_INSTALLED/lib/* $ROOTFS/lib
+
+cp $BROTLI_INSTALLED/lib/libbrotlidec.so.1 $ROOTFS/lib
+cp $BROTLI_INSTALLED/lib/libbrotlicommon.so.1 $ROOTFS/lib
+
+cp -r $FONTCONFIG_INSTALLED/lib/*.so* $ROOTFS/lib
+
+cp $X_INSTALLED/lib/*.so* $ROOTFS/lib
+
+cp $GCC_INSTALLED/lib64/libgcc_s.so $ROOTFS/lib
+cp $GCC_INSTALLED/lib64/libgcc_s.so.1 $ROOTFS/lib
+cp $GCC_INSTALLED/lib64/libstdc++.so $ROOTFS/lib
+cp $GCC_INSTALLED/lib64/libstdc++.so.6 $ROOTFS/lib
+cp $GCC_INSTALLED/lib64/libstdc++.so.6.0.28 $ROOTFS/lib
+
+cp $LIBUUID_INSTALLED/lib/libuuid.so $ROOTFS/lib
+cp $LIBUUID_INSTALLED/lib/libuuid.so.1 $ROOTFS/lib
+ 
+cp -r $EXPAT_INSTALLED/lib/*.so* $ROOTFS/lib
+
+cp $FREETYPE_INSTALLED/lib/libfreetype.so $ROOTFS/lib
+cp $FREETYPE_INSTALLED/lib/libfreetype.so.6 $ROOTFS/lib
+
+cp $LIBBSD_INSTALLED/lib/libbsd.so $ROOTFS/lib
+cp $LIBBSD_INSTALLED/lib/libbsd.so.0 $ROOTFS/lib
+
+cp $GLIB_INSTALLED/lib/libglib-2.0.so $ROOTFS/lib
+cp $GLIB_INSTALLED/lib/libglib-2.0.so.0 $ROOTFS/lib
+
+cp -r $LIBPNG_INSTALLED/lib/libpng.so $ROOTFS/lib
+cp -r $LIBPNG_INSTALLED/lib/libpng16.so $ROOTFS/lib
+cp -r $LIBPNG_INSTALLED/lib/libpng16.so.16 $ROOTFS/lib
+cp -r $LIBPNG_INSTALLED/lib/libpng16.so.16.37.0 $ROOTFS/lib
+
+cp $FLTK_INSTALLED/lib/libfltk.so $ROOTFS/lib
+cp $FLTK_INSTALLED/lib/libfltk.so.1.3 $ROOTFS/lib
+cp $FLTK_INSTALLED/lib/libfltk_forms.so $ROOTFS/lib
+cp $FLTK_INSTALLED/lib/libfltk_forms.so.1.3 $ROOTFS/lib
+cp $FLTK_INSTALLED/lib/libfltk_images.so $ROOTFS/lib
+cp $FLTK_INSTALLED/lib/libfltk_images.so.1.3 $ROOTFS/lib
+
+cp -r $FLWM_INSTALLED/* $ROOTFS
+
+cp $ZLIB_INSTALLED/lib/libz.so $ROOTFS/lib
+cp $ZLIB_INSTALLED/lib/libz.so.1 $ROOTFS/lib
+
+cp $HARFBUZZ_INSTALLED/lib/libharfbuzz.so $ROOTFS/lib
+cp $HARFBUZZ_INSTALLED/lib/libharfbuzz.so.0 $ROOTFS/lib
 # Delete the '.keep' files which we use in order to keep track of otherwise:W
 
 # empty folders.
