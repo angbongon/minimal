@@ -16,54 +16,56 @@ cp -r $BUSYBOX_INSTALLED $ROOTFS
 
 cp -r $SRC_DIR/minimal_rootfs/* $ROOTFS
 
-cp $BZIP2_INSTALLED/lib/* $ROOTFS/lib
+cp -a $BROTLI_INSTALLED/lib/libbrotlicommon.so* $ROOTFS/lib
+cp -a $BROTLI_INSTALLED/lib/libbrotlidec.so* $ROOTFS/lib
 
-cp $BROTLI_INSTALLED/lib/libbrotlidec.so.1 $ROOTFS/lib
-cp $BROTLI_INSTALLED/lib/libbrotlicommon.so.1 $ROOTFS/lib
+cp -a $BZIP2_INSTALLED/lib/*.so* $ROOTFS/lib
 
-cp -r $FONTCONFIG_INSTALLED/lib/*.so* $ROOTFS/lib
+cp -a $EXPAT_INSTALLED/lib/*.so* $ROOTFS/lib
 
-cp $X_INSTALLED/lib/*.so* $ROOTFS/lib
+cp -a $FLTK_INSTALLED/lib/libfltk.so* $ROOTFS/lib
+cp -a $FLTK_INSTALLED/lib/libfltk_forms.so* $ROOTFS/lib
+cp -a $FLTK_INSTALLED/lib/libfltk_images.so* $ROOTFS/lib
 
-cp $GCC_INSTALLED/lib64/libgcc_s.so $ROOTFS/lib
-cp $GCC_INSTALLED/lib64/libgcc_s.so.1 $ROOTFS/lib
-cp $GCC_INSTALLED/lib64/libstdc++.so $ROOTFS/lib
-cp $GCC_INSTALLED/lib64/libstdc++.so.6 $ROOTFS/lib
-cp $GCC_INSTALLED/lib64/libstdc++.so.6.0.28 $ROOTFS/lib
+cp -a $FONTCONFIG_INSTALLED/lib/*.so* $ROOTFS/lib
 
-cp $LIBUUID_INSTALLED/lib/libuuid.so $ROOTFS/lib
-cp $LIBUUID_INSTALLED/lib/libuuid.so.1 $ROOTFS/lib
- 
-cp -r $EXPAT_INSTALLED/lib/*.so* $ROOTFS/lib
+cp -a $FREETYPE_INSTALLED/lib/*.so* $ROOTFS/lib
 
-cp $FREETYPE_INSTALLED/lib/libfreetype.so $ROOTFS/lib
-cp $FREETYPE_INSTALLED/lib/libfreetype.so.6 $ROOTFS/lib
+cp -a $GCC_INSTALLED/lib64/libgcc_s.so* $ROOTFS/lib
+cp -a $GCC_INSTALLED/lib64/libstdc++.so* $ROOTFS/lib
 
-cp $LIBBSD_INSTALLED/lib/libbsd.so $ROOTFS/lib
-cp $LIBBSD_INSTALLED/lib/libbsd.so.0 $ROOTFS/lib
+cp -a $GLIB_INSTALLED/lib/libglib-2.0.so* $ROOTFS/lib
 
-cp $GLIB_INSTALLED/lib/libglib-2.0.so $ROOTFS/lib
-cp $GLIB_INSTALLED/lib/libglib-2.0.so.0 $ROOTFS/lib
+cp -a $HARFBUZZ_INSTALLED/lib/libharfbuzz.so* $ROOTFS/lib
 
-cp -r $LIBPNG_INSTALLED/lib/libpng.so $ROOTFS/lib
-cp -r $LIBPNG_INSTALLED/lib/libpng16.so $ROOTFS/lib
-cp -r $LIBPNG_INSTALLED/lib/libpng16.so.16 $ROOTFS/lib
-cp -r $LIBPNG_INSTALLED/lib/libpng16.so.16.37.0 $ROOTFS/lib
+cp -a $LIBBSD_INSTALLED/lib/libbsd.so* $ROOTFS/lib
 
-cp $FLTK_INSTALLED/lib/libfltk.so $ROOTFS/lib
-cp $FLTK_INSTALLED/lib/libfltk.so.1.3 $ROOTFS/lib
-cp $FLTK_INSTALLED/lib/libfltk_forms.so $ROOTFS/lib
-cp $FLTK_INSTALLED/lib/libfltk_forms.so.1.3 $ROOTFS/lib
-cp $FLTK_INSTALLED/lib/libfltk_images.so $ROOTFS/lib
-cp $FLTK_INSTALLED/lib/libfltk_images.so.1.3 $ROOTFS/lib
+cp -a $LIBPNG_INSTALLED/lib/libpng.so* $ROOTFS/lib
+cp -a $LIBPNG_INSTALLED/lib/libpng16.so* $ROOTFS/lib
+
+cp -a $LIBUUID_INSTALLED/lib/*.so* $ROOTFS/lib
+
+cp -a $PCRE_INSTALLED/lib/libpcre.so* $ROOTFS/lib
+
+cp -a $X_INSTALLED/lib/libICE.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libSM.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libX11.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libXau.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libXcursor.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libXdmcp.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libXext.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libXfixes.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libXft.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libXinerama.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libXmuu.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libXrender.so* $ROOTFS/lib
+cp -a $X_INSTALLED/lib/libxcb.so* $ROOTFS/lib
+cp -a $X_INSTALLED/bin/* $ROOTFS/bin
+cp -a $X_INSTALLED/share/X11 $ROOTFS/share/
+
+cp -a $ZLIB_INSTALLED/lib/libz.so* $ROOTFS/lib
 
 cp -r $FLWM_INSTALLED/* $ROOTFS
-
-cp $ZLIB_INSTALLED/lib/libz.so $ROOTFS/lib
-cp $ZLIB_INSTALLED/lib/libz.so.1 $ROOTFS/lib
-
-cp $HARFBUZZ_INSTALLED/lib/libharfbuzz.so $ROOTFS/lib
-cp $HARFBUZZ_INSTALLED/lib/libharfbuzz.so.0 $ROOTFS/lib
 # Delete the '.keep' files which we use in order to keep track of otherwise:W
 
 # empty folders.
