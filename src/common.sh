@@ -29,6 +29,9 @@ LIBBSD_INSTALLED=$WORK_DIR/libbsd/libbsd_installed
 LIBUUID_INSTALLED=$WORK_DIR/libuuid/libuuid_installed
 LIBUUID_OBJECTS=$WORK_DIR/libuuid/libuuid_objects
 
+PCRE_INSTALLED=$WORK_DIR/pcre/pcre_installed
+PCRE_OBJECTS=$WORK_DIR/pcre/pcre_objects
+
 ZLIB_INSTALLED=$WORK_DIR/zlib/zlib_installed
 ZLIB_OBJECTS=$WORK_DIR/zlib/zlib_objects
 
